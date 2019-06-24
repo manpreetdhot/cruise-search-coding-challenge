@@ -1,0 +1,39 @@
+<div class="bookNowContainer">
+    <center>
+        <div id="loader" class="loader"></div>
+    </center>
+
+    <div id="bookingInfo" class="bookingInfo">
+        <table class="trip">
+            <th colspan="4">Itinerary</th>
+            <tr>
+                <td>Trip:</td> 
+                <td>{{ ctrl.trip.voyages[0].itinerary.description }} </td>
+            </tr>
+            <tr>
+                <td>Trip Duration:</td> 
+                <td>{{ ctrl.trip.voyages[0].duration }} days</td>
+            </tr>
+            <tr>
+                <td>Departure Port:</td> 
+                <td>{{ ctrl.trip.voyages[0].embarkPort.portName }} ({{ ctrl.trip.voyages[0].embarkPort.portCode }})</td>
+            </tr>
+            <tr>
+                <td>Arrival Port:</td> 
+                <td>{{ ctrl.trip.voyages[0].disembarkPort.portName }} ({{ ctrl.trip.voyages[0].disembarkPort.portCode }})</td>
+            </tr>
+            <tr>
+                <td valign="top">Ports of Call:</td>
+                <td>
+                    <p ng-repeat="stop in ctrl.trip.voyages[0].portsOfCall">
+                        <b>Port:</b> {{ stop.portName }}<br />
+                        <b>Arrival date:</b> {{ ctrl.getDate(stop.arrivalDate) }}<br />
+                        <b>Departure date:</b> {{ ctrl.getDate(stop.departureDate) }}<br />
+                    </p>
+                </td>
+            </tr>
+
+        </table>
+    </div>
+</div>
+    

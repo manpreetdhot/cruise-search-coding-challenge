@@ -1,12 +1,121 @@
+<!--  Name: Manpreet Dhot  -->
+
 <!doctype html>
-<html lang="en">
+<html lang="en" ng-app="CruiseSearch">
 
 <head>
   <meta charset="utf-8">
   <title>Front End Challenge</title>
+  <link rel="stylesheet" type="text/css" href="./stylesheet.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.0.4/angular-material.css">
 </head>
 
-<body>
+<body ng-controller="MainController as $ctrl">
+
+    <div class="navbar" id="navbar">
+        <a href="#home" class="active">Home</a>
+        <a href="#plan">Plan</a>
+        <a href="#trips">Trips</a>
+        <a href="#about">About</a>
+    </div>
+
+    <div class="tile" ng-repeat="item in $ctrl.cruiseData track by item.voyages[0]._id">
+        <div class="title">
+            {{ item.voyages[0].itinerary.description }}
+        </div>
+
+        <!-- Organizing information about cruise -->
+        <table>
+            <tr>
+                <td class="mapSpace">
+                    <div class="image"><img id="image" src="https://camo.githubusercontent.com/79dc076ee953b44669f93d25820314b897a80bd3/68747470733a2f2f7777772e686f6c6c616e64616d65726963612e636f6d2f636f6e74656e742f64616d2f68616c2f696e76656e746f72792d6173736574732f64656661756c746d61702f68616c5f64656661756c745f6d61702e6a70672e696d6167652e3538382e3635362e6d656469756d2e6a7067" /></div>
+                </td>
+
+                <td><div class="infoSpace">
+                        DEPARTURE DATE:<br/> <b>{{ $ctrl.getDates(item.voyages[0].dateDepart) }} </b><br />
+                        SHIP: <b>{{ item.voyages[0].ship.displayName }} </b><br /><br />
+                        DEPARTS: <b>{{ item.voyages[0].embarkPort.portName }} </b><br />
+                        ARRIVES: <b>{{ item.voyages[0].disembarkPort.portName }} </b><br />
+                    </div>
+                </td>
+                <td>
+                    <div class="initialPrice">
+                        <center>From<br />
+                            <span class="lowPrice">
+                                US${{ $ctrl.getLowestPricing(item.voyages[0].itinerary.description,item.voyages[0].stateRooms) }}<br />
+                            </span>
+                            per person <b>{{ $ctrl.fromDisplay }}</b><br />
+
+                            <a href="" class="note" ng-click="$ctrl.openFees(item.voyages[0].currencySymbol,item.voyages[0].TFPE.price)">*{{ item.voyages[0].TFPE.text }} {{ item.voyages[0].currencySymbol }}{{ item.voyages[0].TFPE.price }}</a><br/><br/>
+
+                            <button class="button" ng-click="$ctrl.displayItinerary(item)">VIEW ITINERARY</button>
+                        </center>
+                    </div>
+                </td>
+            </tr>
+        </table>
+
+        <!-- Section of page containing information about each stateroom -->
+        <div class="roomPrices">
+            <div class="buttonSpace">
+                    <table class="comparison">
+                        <!-- Stateroom title -->
+                        <tr>
+                            <td align="center" 
+                                ng-hide="$ctrl.isSoldOut(room)" 
+                                ng-repeat="room in item.voyages[0].stateRooms">
+                                {{room._id.toUpperCase()}}
+                            </td>
+                        </tr>
+                        <!-- Stateroom pricing (if not sold out) -->
+                        <tr>
+                            <td align="center" 
+                                ng-hide="$ctrl.isSoldOut(room)" 
+                                ng-repeat="room in item.voyages[0].stateRooms">
+                                <button ng-click="$ctrl.selectRoom(room)" class="button">{{ $ctrl.getPricing(room) }}</button>
+                            </td>
+                            <!-- Book now button (active only if room selected) -->
+                            <td>
+                                <md-button  ng-click="$ctrl.displayBooking(item)" 
+                                            ng-disabled="$ctrl.room == null" 
+                                            class="md-raised md-warn">
+                                    BOOK NOW
+                                </md-button>
+                            </td>
+                        </tr>
+
+                    </table><br />
+
+                    <!-- Note about fees -->
+                    <center>
+                        <a href=""  class="note" 
+                                    ng-click="$ctrl.openFees(item.voyages[0].currencySymbol,item.voyages[0].TFPE.price)">
+                            *{{ item.voyages[0].TFPE.text }} {{ item.voyages[0].currencySymbol }}{{ item.voyages[0].TFPE.price }}
+                        </a>
+                    </center>
+            </div>
+        </div>
+        <br />
+        <!-- Note about fees -->
+        <div class="note">
+            *The deposit on this cruise is fully non-refundable. Fares shown are in US$, per person, 
+            based on double occupancy. Fares reflect best fare available for a stateroom in each category, on one 
+            date that this itinerary is available from a snapshot taken in the last 24 hours. <a href="">View Pricing Terms</a>
+        </div>
+    </div>
+
 </body>
 
+    <script type="text/javascript" src="./node_modules/angular/angular.js"></script>
+    <script type="text/javascript" src="./node_modules/angular-animate/angular-animate.min.js"></script>
+    <script type="text/javascript" src="./node_modules/angular-modal-service/dst/angular-modal-service.min.js"></script>
+    <script type="text/javascript" src="./node_modules/angular-route/angular-route.min.js"></script>
+    <script type="text/javascript" src="./node_modules/angular-material/angular-material.min.js"></script>
+    <script type="text/javascript" src="./node_modules/angular-aria/angular-aria.min.js"></script>
+    <script type="text/javascript" src="./node_modules/angular-messages/angular-messages.min.js"></script>
+    <script type="text/javascript" src="./app.js"></script>
+    <script type="text/javascript" src="routes/booknow/booknow.js"></script>
+    <script type="text/javascript" src="routes/viewitinerary/itinerary.js"></script>
+
 </html>
+

@@ -1,0 +1,31 @@
+<div class="bookNowContainer">
+    <center>
+        <div id="loader" class="loader"></div>
+    </center>
+
+    <div id="bookingInfo" class="bookingInfo">
+        <table class="book">
+            <th colspan="4">Booking Information</th>
+            <tr>
+                <td>Itinerary ID:</td> 
+                <td>{{ ctrl.trip.itineraryId }} </td>
+            </tr>
+            <tr>
+                <td>StateRoom:</td> 
+                <td>{{ ctrl.room._id }} </td>
+            </tr>
+            <tr>
+                <td>Fare:</td> 
+                <td>{{ ctrl.room.priceBlocks[0].currencyCode }}${{ ctrl.room.priceBlocks[0].prices[0].fare }}</td>
+            </tr>
+            <tr>
+                <td>Taxes and Fees:</td> 
+                <td>{{ ctrl.room.priceBlocks[0].currencyCode }}${{ ctrl.room.priceBlocks[0].govtFeesAndTaxes }}</td>
+            </tr>
+            <tr>
+                <td><b>Total</b>:</td> 
+                <td><b>{{ ctrl.room.priceBlocks[0].currencyCode }}${{ ctrl.room.priceBlocks[0].prices[0].fare + ctrl.room.priceBlocks[0].govtFeesAndTaxes }}</td>
+            </tr>
+        </table>
+    </div>
+</div>
