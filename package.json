@@ -1,0 +1,31 @@
+{
+  "name": "cruise-search-coding-challenge",
+  "version": "1.0.0",
+  "description": "Building a navigation navbar and cruise tiles. Use AngularJS or React, CSS and HTML. Please see the sample image below for the tiles. (Feel free make your own tile or follow design below). The API will be the data used to populate the cruise tiles. You can start with the code in index.html or create your own project.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aaronpurt/cruise-search-coding-challenge.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aaronpurt/cruise-search-coding-challenge/issues"
+  },
+  "homepage": "https://github.com/aaronpurt/cruise-search-coding-challenge#readme",
+  "dependencies": {
+    "@uirouter/angularjs": "^1.0.22",
+    "angular": "^1.7.8",
+    "angular-animate": "^1.7.8",
+    "angular-aria": "^1.7.8",
+    "angular-material": "^1.1.19",
+    "angular-messages": "^1.7.8",
+    "angular-modal-service": "^0.15.3",
+    "angular-route": "1.7.x",
+    "live-server": "^1.2.1",
+    "md-dialog": "0.0.1-alpha.1"
+  }
+}
