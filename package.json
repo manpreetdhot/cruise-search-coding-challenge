@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/manpreetdhot/cruise-search-coding-challenge.git"
+    "url": "git+https://github.com/aaronpurt/cruise-search-coding-challenge.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/aaronpurt/cruise-search-coding-challenge/issues"
   },
-  "homepage": "https://manpreetdhot.github.io/cruise-search-coding-challenge",
+  "homepage": "https://github.com/aaronpurt/cruise-search-coding-challenge#readme",
   "dependencies": {
     "@uirouter/angularjs": "^1.0.22",
     "angular": "^1.7.8",
