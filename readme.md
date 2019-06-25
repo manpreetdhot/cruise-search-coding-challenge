@@ -1,6 +1,15 @@
 # Cruise Search Coding Challenge
 
-Building a navigation navbar and cruise tiles. Use AngularJS or React, CSS and HTML. Please see the sample image below for the tiles. (Feel free make your own tile or follow design below). The API will be the data used to populate the cruise tiles. You can start with the code in index.html or create your own project.
+Rendition of the Cruise Search Coding Challenge created by Manpreet Dhot.
+
+## Getting started
+
+- Run `npm install`
+
+## Viewing application
+
+- In the same project directory, run `live-server`
+- Navigate to 'http://127.0.0.1:8080/' The application should be visible here.
 
 ## Requirements:
 
